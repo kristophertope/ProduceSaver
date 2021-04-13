@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Enter New Products</title>
+</head>
+<body>
+	<form th:object="${newProduce}" th:action="@{/update/{id}(id=${newProduce.id})}" method="POST">
+	Name: <input name="name" size="20" th:field="*{name}"><br />
+	
+	<input name="submit" type="submit" />
+	</form>
+	
+	<a href="viewProduceList">View the list of all the products</a>
+
+</body>
+</html>
