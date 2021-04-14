@@ -3,17 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <title>View the List of Produce</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/saver_style.css}">
+<style>
+	table, tr, td{
+		border: 2px solid black;
+		border-collapse: collapse;
+	}
+	tr:first-of-type{
+		font-weight: 900;
+		background-color: black;
+		color: white;
+		text-align: center;
+	}
+</style>
 </head>
 <body>
 	<form >
-	<table>
-		<tr th:each="produceObject : ${produce}">
-		<td th:text="${produceObject.name}" />
-		<td th:text="${produceObject.purchaseDate}" />
-		<td th:text="${produceObject.expirationDate}" />
-		<td><a th:href="@{/edit/{id}(id=${produceObject.id})}">Edit</a></td>
-		<td><a th:href="@{/delete/{id}(id=${produceObject.id})}">Delete</a></td>
-		</tr>	
+		<table>
+			<tr>
+				<td>Product</td>
+				<td>Purchase Date</td>
+				<td>Expiration Date</td>
+			</tr>
+			<tr th:each="produceObject : ${produce}">
+				<td th:text="${produceObject.name}" />
+				<td th:text="${produceObject.purchaseDate}" />
+				<td th:text="${produceObject.expirationDate}" />
+				<td><a th:href="@{/edit/{id}(id=${produceObject.id})}">Edit</a></td>
+				<td><a th:href="@{/delete/{id}(id=${produceObject.id})}">Delete</a></td>
+			</tr>	
 		</table>
 	</form>
 	

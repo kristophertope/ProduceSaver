@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Enter New Products</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/saver_style.css}">
 </head>
 <body>
 	<form th:object="${newProduce}" th:action="@{/update/{id}(id=${newProduce.id})}" method="POST">
