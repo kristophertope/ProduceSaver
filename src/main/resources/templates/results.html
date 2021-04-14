@@ -5,27 +5,52 @@
 <title>View the List of Produce</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/saver_style.css}">
 <style>
-	table, tr, td{
-		border: 5px solid white;
+	table {
+		border-collapse: collapse;
+		border-bottom: 5px solid white;
+		margin-bottom: 10px;
+	}
+	
+	tr{
+		border-bottom: 2px solid white;
+	}
+	
+	tr, td{
 		border-collapse: collapse;
 		padding: 15px;
 	}
-	tr:first-of-type{
+	thead {
 		font-weight: 900;
-		color: white;
+		background-color: white;
 		text-align: center;
+	}
+	thead tr{
+		border-bottom: none;
+	}
+	thead td{
+		color: rgb(110,218,218);
+	}
+	table thead tr:first-of-type td:first-of-type{
+		border-radius: 50px 0 0 0;
+	}
+	table thead tr:first-of-type td:last-of-type{
+		border-radius: 0 50px 0 0;
 	}
 </style>
 </head>
 <body>
 	<div id="container">
 		<form >
-			<table>
-				<tr>
-					<td>Product</td>
-					<td>Purchase Date</td>
-					<td>Expiration Date</td>
-				</tr>
+			<table class="test">
+				<thead>
+					<tr>
+						<td>Product</td>
+						<td>Purchase Date</td>
+						<td>Expiration Date</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</thead>
 				<tr th:each="produceObject : ${produce}">
 					<td th:text="${produceObject.name}" />
 					<td th:text="${produceObject.purchaseDate}" />
