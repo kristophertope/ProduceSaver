@@ -1,6 +1,6 @@
 /*
-Blue: rgb(88,199,249)
-Green: rgb(144,237,187)
+Blue: rgb(88,199,249) #58c6f9
+Green: rgb(144,237,187) #90edbb
 */
 
 * {
@@ -9,17 +9,46 @@ Green: rgb(144,237,187)
 	color: white;
 }
 
+header {
+	display: flex;
+	justify-content: center;
+	border-bottom: 5px solid white;
+}
+
+header h1 {
+	font-size: 70px;
+	margin: 10px;
+}
+
+nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	position: sticky;
+	top: 0;
+	border-bottom: 5px solid white;
+}
+
+nav a {
+	text-decoration: none;
+}
+
+nav a:hover {
+	background-color: white;
+	color: rgb(110,218,218);
+}
+
 #container {
 	margin: auto;
+	padding-top: 20px;
 	display: flex;
 	width: 80%;
 	height: 100vh;
-	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 }
 
-body {
+body, nav {
 	background-image: url("saver-background.png")
 }
 
@@ -27,7 +56,7 @@ input{
 	color: rgb(110,218,218);
 }
 
-a, input[type="submit"]{
+#container a, input[type="submit"]{
 	margin: 10px;
 	padding: 5px;
 	border: 3px dashed white;
@@ -37,7 +66,7 @@ a, input[type="submit"]{
 	background-color: rgba(0,0,0,0);
 }
 
-a:hover, input[type="submit"]:hover{
+#container a:hover, input[type="submit"]:hover{
 	background-color: rgba(255,255,255,.3);
 	color: white;
 	border: 3px solid white;

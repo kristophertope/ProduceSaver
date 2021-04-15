@@ -6,14 +6,21 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/saver_style.css}">
 </head>
 <body>
+	<header>
+		<h1>PRODUCE SAVER</h1>
+	</header>
+	
+	<nav>
+		<a href="#">ADD NEW</a>
+		<a href="viewProduceList">VIEW ALL</a>
+		<a href="#">EMAIL LIST</a>
+	</nav>
 	<div id="container">
 		<form th:object="${newProduce}" th:action="@{/update/{id}(id=${newProduce.id})}" method="POST">
 		Name: <input name="name" size="20" th:field="*{name}"><br />
 		
 		<input name="submit" type="submit" />
 		</form>
-		
-		<a href="viewProduceList">View the list of all the products</a>
 	</div>
 </body>
 </html>
