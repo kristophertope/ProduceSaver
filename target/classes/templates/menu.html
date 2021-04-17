@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Check Your Options</title>
+</head>
+<body>
+	<form>
+	<table>
+		<tr th:each="menuOption : ${option}">
+		<td th:text="${menuOption.id}"/>
+		<td th:text="${menuOption.name}"/>
+		<td th:text="${menuOption.grocery.name}"/>
+		
+	</table>
+	
+	<button type="submit" formaction="/inputMenu">Enter your Favorite Recipes</button>
+	
+	</form>
+</body>
+</html>

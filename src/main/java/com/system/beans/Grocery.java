@@ -1,7 +1,8 @@
 package com.system.beans;
 
-import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,26 +11,21 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-/**
- * @author Joel Martinez-Gonzalez - jmartinezgonzale
- * CIS175 - Spring 2021
- * Apr 11, 2021
- */
 
-@Data
 @Entity
+@Data
 @AllArgsConstructor
-public class Produce {
+//@Embeddable
+
+public class Grocery {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String name;
-	private LocalDate purchaseDate = LocalDate.now();
-	private LocalDate expirationDate = LocalDate.now().plusDays(5);
+	//private List<String> ingredientsList;
 	
-	
-	public Produce() {
-		
+	public Grocery() {
+		// TODO Auto-generated constructor stub
 	}
 	
 	
