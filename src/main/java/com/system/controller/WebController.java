@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.system.beans.Grocery;
 import com.system.beans.Produce;
+import com.system.beans.Recipes;
+import com.system.repository.GroceryInterface;
+import com.system.repository.MenuRepository;
 import com.system.repository.ProduceAppRepository;
 
 /**
@@ -24,8 +28,13 @@ public class WebController {
 	
 	@Autowired
 	ProduceAppRepository repo;
+	@Autowired
+	MenuRepository menuRepo;
+	@Autowired
+	GroceryInterface groceryRepo;
 	
-	@GetMapping({"/", "/viewProduceList"})
+	//All this section is the related to products 
+	@GetMapping({"/viewProduceList"})
 	public String viewProduceList(Model model) {
 		if(repo.findAll().isEmpty()) {
 			return inputProduce(model);
@@ -63,13 +72,78 @@ public class WebController {
 		repo.save(b);
 		return viewProduceList(model);
 	}
+	//Here ends the products section
 	
-	@GetMapping("/delete/{id}")
-	public String deleteBook(@PathVariable("id") long id, Model model) {
-		Produce b = repo.findById(id).orElse(null);
-		repo.delete(b);
-		return viewProduceList(model);
+	//All this section is related to the meal plan
 				
+	@GetMapping("/menuOptions")
+	public String menuOptions(Model model) {
+		if(menuRepo.findAll().isEmpty()) {
+			return inputMenu(model);
+		}
+		model.addAttribute("option", menuRepo.findAll());
+		return "menu";
 	}
+	
+	@GetMapping("/inputMenu")
+	public String inputMenu(Model model){
+		Recipes r = new Recipes();
+		model.addAttribute("newRecipe", r);
+		return "inputMenu";
+		
+	}
+	
+	@PostMapping("/inputMenu")
+	public String inputMenu(@ModelAttribute Recipes re, Model model) {
+		
+		groceryRepo.save(re.getGrocery());
+		menuRepo.save(re);
+		return menuOptions(model);
+	}
+	
+	@GetMapping("/menuGroceryList")
+	public String menuGroceryList(Model model) {
+
+		model.addAttribute("product", groceryRepo.findAll());
+		return "groceryList";
+	}
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

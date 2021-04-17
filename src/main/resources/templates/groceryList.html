@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Your Groceries</title>
+</head>
+<body>
+	<table>
+		<tr th:each="grocery : ${product}">
+		<td th:text="${grocery.id}"/>
+		<td th:text="${grocery.name}"/>
+		
+	
+	</table>
+
+</body>
+
+</html>
