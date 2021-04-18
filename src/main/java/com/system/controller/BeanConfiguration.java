@@ -3,7 +3,9 @@ package com.system.controller;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.system.beans.Grocery;
 import com.system.beans.Produce;
+import com.system.beans.Recipes;
 
 /**
  * @author Joel Martinez-Gonzalez - jmartinezgonzale
@@ -19,6 +21,18 @@ public class BeanConfiguration {
 		
 		Produce produce = new Produce();
 		return produce;
+	}
+	
+	@Bean
+	public Recipes recipes() {
+		Recipes recipes = new Recipes();
+		return recipes;
+	}
+	
+	@Bean 
+	public Grocery gorcery() {
+		Grocery g = new Grocery();
+		return g;
 	}
 
 }
