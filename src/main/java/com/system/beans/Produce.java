@@ -24,8 +24,10 @@ public class Produce {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String name;
+	private String category;
+	private int shelfLife;
 	private LocalDate purchaseDate = LocalDate.now();
-	private LocalDate expirationDate = LocalDate.now().plusDays(5);
+	private LocalDate expirationDate = LocalDate.now().plusDays(shelfLife);
 	
 	
 	public Produce() {
