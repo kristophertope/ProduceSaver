@@ -1,6 +1,11 @@
 /*
 Blue: rgb(88,199,249) #58c6f9
 Green: rgb(144,237,187) #90edbb
+
+TODO:
+Add new pages to NAV
+Header link to index
+
 */
 
 * {
@@ -16,9 +21,10 @@ header {
 	border-bottom: 5px solid white;
 }
 
-header h1 {
+header h1 a{
 	font-size: 70px;
 	margin: 10px;
+	text-decoration: none;
 }
 
 nav {
