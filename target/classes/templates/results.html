@@ -55,17 +55,19 @@
 			<table class="test">
 				<thead>
 					<tr>
-						<td>Product</td>
-						<td>Purchased</td>
-						<td>Expires</td>
+						<td>Produce</td>
+						<td>Category</td>
+						<td>Shelf Life (In Days)</td>
 						<td></td>
 						<td></td>
 					</tr>
 				</thead>
 				<tr th:each="produceObject : ${produce}">
 					<td th:text="${produceObject.name}" />
-					<td th:text="${produceObject.purchaseDate}" />
-					<td th:text="${produceObject.expirationDate}" />
+					<td th:text="${produceObject.category}" />
+					<td th:text="${produceObject.shelfLife}"/>
+<!-- 					<td th:text="${produceObject.purchaseDate}" /> -->
+<!-- 					<td th:text="${produceObject.expirationDate}" /> -->
 					<td><a th:href="@{/edit/{id}(id=${produceObject.id})}">Edit</a></td>
 					<td><a th:href="@{/delete/{id}(id=${produceObject.id})}">Delete</a></td>
 				</tr>	
