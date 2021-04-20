@@ -3,19 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Check Your Options</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/saver_style.css}">
+<meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no">
 </head>
 <body>
-	<form>
-	<table>
-		<tr th:each="menuOption : ${option}">
-		<td th:text="${menuOption.id}"/>
-		<td th:text="${menuOption.name}"/>
-		<td th:text="${menuOption.grocery.name}"/>
-		
-	</table>
+	<header>
+		<h1>PRODUCE SAVER</h1>
+	</header>
 	
-	<button type="submit" formaction="/inputMenu">Enter your Favorite Recipes</button>
+	<nav>
+		<a href="../inputProduce">ADD NEW</a>
+		<a href="viewProduceList">VIEW ALL</a>
+		<a href="#">EMAIL LIST</a>
+	</nav>
 	
-	</form>
+	<div id="container">	
+		<form>
+			<table>
+				<tr th:each="menuOption : ${option}">
+				<td th:text="${menuOption.id}"/>
+				<td th:text="${menuOption.name}"/>
+				<td th:text="${menuOption.grocery.name}"/>
+				
+			</table>
+		<button type="submit" formaction="/inputMenu">Enter your Favorite Recipes</button>
+		</form>
+	</div>
 </body>
 </html>

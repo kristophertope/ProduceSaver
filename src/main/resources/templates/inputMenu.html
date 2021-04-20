@@ -3,19 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Enter your Recipe</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/saver_style.css}">
+<meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no">
 </head>
 <body>
+	<header>
+		<h1>PRODUCE SAVER</h1>
+	</header>
+	
+	<nav>
+		<a href="../inputProduce">ADD NEW</a>
+		<a href="viewProduceList">VIEW ALL</a>
+		<a href="#">EMAIL LIST</a>
+	</nav>
+	
 	<form th:object="${newRecipe}" th:action="@{/inputMenu}" method="POST">
-	Name: <input name="name" size="20" th:field="*{name}"/><br>
-	Ingredients: <input name="grocery" th:field="*{grocery.name}"><br>
-	Ingredients: <input name="grocery" th:field="*{grocery.name}"><br>
-	Ingredients: <input name="grocery" th:field="*{grocery.name}"><br>
-	Ingredients: <input name="grocery" th:field="*{grocery.name}"><br>
-	Ingredients: <input name="grocery" th:field="*{grocery.name}"><br>
-	
-	<button id="more">Add More Ingredients</button>
-	<input name="Submit" type="submit"/>	
-	
+		Name: <input name="name" size="20" th:field="*{name}"/><br>
+		Ingredients: <input name="grocery" th:field="*{grocery.name}"><br>
+		Ingredients: <input name="grocery" th:field="*{grocery.name}"><br>
+		Ingredients: <input name="grocery" th:field="*{grocery.name}"><br>
+		Ingredients: <input name="grocery" th:field="*{grocery.name}"><br>
+		Ingredients: <input name="grocery" th:field="*{grocery.name}"><br>
+		<button id="more">Add More Ingredients</button>
+		<input name="Submit" type="submit"/>	
 	</form>
 	
 	<a href="/menuOptions">See all your recipes</a>
