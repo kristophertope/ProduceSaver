@@ -8,22 +8,24 @@
 </head>
 <body>
 	<header>
-		<h1><a href="../static/index.html">PRODUCE SAVER</a></h1>
+		<h1><a href="/index.html">PRODUCE SAVER</a></h1>
 	</header>
 	
 	<nav>
-		<a href="../inputProduce">ADD NEW</a>
+		<a href="../inputProduce">ADD PRODUCE</a>
 		<a href="viewProduceList">VIEW ALL</a>
-		<a href="#">EMAIL LIST</a>
+		<a href="menuOptions">MEAL PLANNER</a>
+		<a id="active" href="menuGroceryList">SHOPPING LIST</a>
 	</nav>
-	<table>
-		<tr th:each="grocery : ${product}">
-		<td th:text="${grocery.id}"/>
-		<td th:text="${grocery.name}"/>
-		
 	
-	</table>
-
+	<div id="container">
+		<table>
+			<tr th:each="grocery : ${product}">
+			<td th:text="${grocery.id}"/>
+			<td th:text="${grocery.name}"/>
+		</table>
+	</div>
+	
 </body>
 
 </html>
