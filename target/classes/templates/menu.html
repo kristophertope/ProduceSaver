@@ -25,7 +25,7 @@
 				<tr th:each="menuOption : ${option}">
 				<td th:text="${menuOption.id}"/>
 				<td th:text="${menuOption.name}"/>
-				<td th:text="${ingredient.name}"/>
+				<td th:text="${menuOption.grocery.name}"/>
 				
 			</table>
 		<button type="submit" formaction="/inputMenu">Enter your Favorite Recipes</button>
