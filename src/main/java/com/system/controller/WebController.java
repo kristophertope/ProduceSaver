@@ -1,5 +1,9 @@
 package com.system.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +76,13 @@ public class WebController {
 		repo.save(b);
 		return viewProduceList(model);
 	}
+	
+	@GetMapping("/delete/{id}")
+	public String deleteProduce(@PathVariable("id") long id, Model model) {
+		Produce p = repo.findById(id).orElse(null);
+		repo.delete(p);
+		return viewProduceList(model);
+	}
 	//Here ends the products section
 	
 	//All this section is related to the meal plan
@@ -88,15 +99,19 @@ public class WebController {
 	@GetMapping("/inputMenu")
 	public String inputMenu(Model model){
 		Recipes r = new Recipes();
+		Grocery g = new Grocery();
 		model.addAttribute("newRecipe", r);
 		return "inputMenu";
 		
 	}
 	
 	@PostMapping("/inputMenu")
-	public String inputMenu(@ModelAttribute Recipes re, Model model) {
+	public String inputMenu(@ModelAttribute Recipes re, @ModelAttribute("ingredient") Grocery gr, Model model) {
 		
-		groceryRepo.save(re.getGrocery());
+		gr = new Grocery();
+		groceryRepo.save(gr);
+		
+		
 		menuRepo.save(re);
 		return menuOptions(model);
 	}
