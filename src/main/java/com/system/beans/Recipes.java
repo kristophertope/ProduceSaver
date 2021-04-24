@@ -27,9 +27,8 @@ public class Recipes {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String name;
-	@ElementCollection
-	private List<Grocery> ingredientList = new ArrayList<Grocery>();
-	
+	@ManyToOne
+	Grocery grocery;
 	
 	public Recipes() {
 		super();
