@@ -93,7 +93,6 @@ public class WebController {
 			return inputMenu(model);
 		}
 		model.addAttribute("option", menuRepo.findAll());
-		model.addAttribute("ingredient", groceryRepo.findAll());
 		return "menu";
 	}
 	
@@ -102,7 +101,6 @@ public class WebController {
 		Recipes r = new Recipes();
 		Grocery g = new Grocery();
 		model.addAttribute("newRecipe", r);
-		model.addAttribute("ingredient", g);
 		return "inputMenu";
 		
 	}
@@ -111,7 +109,6 @@ public class WebController {
 	public String inputMenu(@ModelAttribute Recipes re, @ModelAttribute("ingredient") Grocery gr, Model model) {
 		
 		gr = new Grocery();
-		re.getIngredientList().add(gr);
 		groceryRepo.save(gr);
 		
 		
