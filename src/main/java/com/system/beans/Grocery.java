@@ -15,7 +15,7 @@ import lombok.Data;
 @Entity
 @Data
 @AllArgsConstructor
-//@Embeddable
+@Embeddable
 
 public class Grocery {
 	@Id
