@@ -22,11 +22,8 @@
 	<div id="container">
 		<form th:object="${newRecipe}" th:action="@{/inputMenu}" method="POST">
 			Name: <input name="name" size="20" th:field="*{name}"/><br>
-			Ingredients: <input name="grocery" th:field="${ingredient.name}"><br>
-			Ingredients: <input name="grocery" th:field="${ingredient.name}"><br>
-			Ingredients: <input name="grocery" th:field="${ingredient.name}"><br>
 			Ingredients: <input name="grocery" th:field="*{grocery.name}"><br>
-			Ingredients: <input name="grocery" th:field="*{grocery.name}"><br>
+		
 			<button id="more">Add More Ingredients</button>
 			<input name="Submit" type="submit"/>	
 		</form>
