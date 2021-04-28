@@ -106,10 +106,9 @@ public class WebController {
 	}
 	
 	@PostMapping("/inputMenu")
-	public String inputMenu(@ModelAttribute Recipes re, @ModelAttribute("ingredient") Grocery gr, Model model) {
+	public String inputMenu(@ModelAttribute Recipes re, Model model) {
 		
-		gr = new Grocery();
-		groceryRepo.save(gr);
+		groceryRepo.save(re.getGrocery());
 		
 		
 		menuRepo.save(re);
@@ -118,9 +117,29 @@ public class WebController {
 	
 	@GetMapping("/menuGroceryList")
 	public String menuGroceryList(Model model) {
-
+		if(groceryRepo.findAll().isEmpty()) {
+			return menuOptions(model);
+		}
 		model.addAttribute("product", groceryRepo.findAll());
 		return "groceryList";
+	}
+	
+	@GetMapping("/deleteGrocery/{id}")
+	public String deleteGrocery(@PathVariable("id") long id, Model model) {
+		Grocery gr = groceryRepo.findById(id).orElse(null);
+		groceryRepo.delete(gr);
+		
+		return menuGroceryList(model);
+	}
+	
+	
+	//This section is related to recipes
+	@GetMapping("/deleteRecipe/{id}")
+	public String deleteRecipe(@PathVariable("id") long id, Model model) {
+		Recipes r = menuRepo.findById(id).orElse(null);
+		menuRepo.delete(r);
+		groceryRepo.delete(r.getGrocery());
+		return menuOptions(model);
 	}
 	
 
