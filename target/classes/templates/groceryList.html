@@ -21,8 +21,8 @@
 	<div id="container">
 		<table>
 			<tr th:each="grocery : ${product}">
-			<td th:text="${grocery.id}"/>
 			<td th:text="${grocery.name}"/>
+			<td><a th:href="@{/deleteGrocery/{id}(id=${grocery.id})}">Delete</a></td>
 		</table>
 	</div>
 	
