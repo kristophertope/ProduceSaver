@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <title>Enter your Recipe</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/saver_style.css}">
+<script src="Scripts/jquery-3.6.0.js" type="text/javascript"></script>
+<script src="Scripts/script.js" type="text/javascript"></script>
 <meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no">
 </head>
 <body>
@@ -22,8 +24,10 @@
 	<div id="container">
 		<form th:object="${newRecipe}" th:action="@{/inputMenu}" method="POST">
 			Name: <input name="name" size="20" th:field="*{name}"/><br>
-			Ingredients: <input name="grocery" th:field="*{grocery.name}"><br>
-		
+			<div id="ingredient">
+			Ingredients: <input name="grocery.name" th:field="*{grocery.name}"><br>
+			
+			</div>
 			<button id="more" type="button">Add More Ingredients</button>
 			<input name="Submit" type="submit"/>	
 		</form>
@@ -31,6 +35,11 @@
 		<a href="/menuOptions">See all your recipes</a>
 	</div>
 </body>
-<script src="Scripts/jquery-3.6.0.js" type="text/javascript"></script>
-<script src="Scripts/script.js" type="text/javascript"></script>
+<script>
+$('#more').click(function(){
+	$('#ingredient').append('Ingredients: <input name="grocery.name" th:field="*{grocery.name}"><br>');
+});
+
+</script>
+
 </html>

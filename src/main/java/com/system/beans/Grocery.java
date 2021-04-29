@@ -28,6 +28,10 @@ public class Grocery {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Grocery(String name) {
+		this.name = name;
+	}
+	
 	
 
 }
