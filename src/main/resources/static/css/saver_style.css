@@ -1,9 +1,17 @@
 /*
 Blue: rgb(88,199,249) #58c6f9
 Green: rgb(144,237,187) #90edbb
+
+TODO:
+Add new pages to NAV
+Header link to index
+
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,300&display=swap');
+
 * {
+	box-sizing: border-box;
 	font-family: sans-serif;
 	font-size: 30px;
 	color: white;
@@ -15,9 +23,18 @@ header {
 	border-bottom: 5px solid white;
 }
 
-header h1 {
+header img {
+	width: 100px;
+	height: 100px;
+	margin-top: 10px;
+	margin-right: 20px;
+}
+
+header h1 a{
+	font-family: 'Raleway', sans-serif;
 	font-size: 70px;
 	margin: 10px;
+	text-decoration: none;
 }
 
 nav {
@@ -33,7 +50,7 @@ nav a {
 	text-decoration: none;
 }
 
-nav a:hover {
+nav a:hover, #active {
 	background-color: white;
 	color: rgb(110,218,218);
 }
@@ -52,11 +69,45 @@ body, nav {
 	background-image: url("saver-background.png")
 }
 
-input{
+
+/*TABLE*/
+table {
+		border-collapse: collapse;
+		border-bottom: 5px solid white;
+		margin-bottom: 10px;
+}
+
+tr {
+	border-bottom: 2px solid white;
+}
+
+tr, td {
+	border-collapse: collapse;
+	padding: 15px;
+}
+thead {
+	font-weight: 900;
+	background-color: white;
+	text-align: center;
+}
+thead tr {
+	border-bottom: none;
+}
+thead td {
+	color: rgb(110,218,218);
+}
+table thead tr:first-of-type td:first-of-type {
+	border-radius: 40px 0 0 0;
+}
+table thead tr:first-of-type td:last-of-type {
+	border-radius: 0 40px 0 0;
+}
+
+input {
 	color: rgb(110,218,218);
 }
 
-#container a, input[type="submit"]{
+#container a, input[type="submit"], button{
 	margin: 10px;
 	padding: 5px;
 	border: 3px dashed white;

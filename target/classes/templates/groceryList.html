@@ -3,16 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Your Groceries</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/saver_style.css}">
+<meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no">
 </head>
 <body>
-	<table>
-		<tr th:each="grocery : ${product}">
-		<td th:text="${grocery.id}"/>
-		<td th:text="${grocery.name}"/>
-		
+	<header>
+		<h1><a href="/index.html">PRODUCE SAVER</a></h1>
+	</header>
 	
-	</table>
-
+	<nav>
+		<a href="../inputProduce">ADD PRODUCE</a>
+		<a href="viewProduceList">VIEW ALL</a>
+		<a href="menuOptions">MEAL PLANNER</a>
+		<a id="active" href="menuGroceryList">SHOPPING LIST</a>
+	</nav>
+	
+	<div id="container">
+		<table>
+			<tr th:each="grocery : ${product}">
+			<td th:text="${grocery.name}"/>
+			<td><a th:href="@{/deleteGrocery/{id}(id=${grocery.id})}">Delete</a></td>
+		</table>
+	</div>
+	
 </body>
 
 </html>

@@ -3,19 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Check Your Options</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/saver_style.css}">
+<meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no">
 </head>
 <body>
-	<form>
-	<table>
-		<tr th:each="menuOption : ${option}">
-		<td th:text="${menuOption.id}"/>
-		<td th:text="${menuOption.name}"/>
-		<td th:text="${menuOption.grocery.name}"/>
-		
-	</table>
+	<header>
+		<img  src="css/ps_logo.png">
+		<h1><a href="/index.html">PRODUCE SAVER</a></h1>
+	</header>
 	
-	<button type="submit" formaction="/inputMenu">Enter your Favorite Recipes</button>
+	<nav>
+		<a href="../inputProduce">ADD PRODUCE</a>
+		<a href="viewProduceList">VIEW ALL</a>
+		<a id="active" href="menuOptions">MEAL PLANNER</a>
+		<a href="menuGroceryList">SHOPPING LIST</a>
+	</nav>
 	
-	</form>
+	<div id="container">	
+		<form>
+			<table>
+				<tr th:each="menuOption : ${option}">
+				<td th:text="${menuOption.name}"/>
+				<td><a th:href="@{/deleteRecipe/{id}(id=${menuOption.id})}">Delete</a></td>
+				
+			</table>
+		<button type="submit" formaction="/inputMenu">Enter your Favorite Recipes</button>
+		</form>
+	</div>
 </body>
 </html>

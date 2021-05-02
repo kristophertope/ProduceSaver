@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Enter New Products</title>
-<link rel="stylesheet" type="text/css" th:href="@{/css/saver_style.css}">
+	<meta charset="UTF-8">
+	<title>Enter New Products</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/saver_style.css}">
 </head>
 <body>
 	<header>
-		<h1>PRODUCE SAVER</h1>
+	<img  src="css/ps_logo.png">
+		<h1><a href="/index.html">PRODUCE SAVER</a></h1>
 	</header>
 	
 	<nav>
-		<a href="#">ADD NEW</a>
+		<a id="active" href="../inputProduce">ADD PRODUCE</a>
 		<a href="viewProduceList">VIEW ALL</a>
-		<a href="#">EMAIL LIST</a>
+		<a href="menuOptions">MEAL PLANNER</a>
+		<a href="menuGroceryList">SHOPPING LIST</a>
 	</nav>
+	
 	<div id="container">
+
+		
 		<form th:object="${newProduce}" th:action="@{/update/{id}(id=${newProduce.id})}" method="POST">
 		Name: <input name="name" size="20" th:field="*{name}"><br />
 		

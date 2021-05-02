@@ -4,50 +4,24 @@
 <meta charset="UTF-8">
 <title>View the List of Produce</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/saver_style.css}">
+<meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no">
+
 <style>
-	table {
-		border-collapse: collapse;
-		border-bottom: 5px solid white;
-		margin-bottom: 10px;
-	}
 	
-	tr{
-		border-bottom: 2px solid white;
-	}
-	
-	tr, td{
-		border-collapse: collapse;
-		padding: 15px;
-	}
-	thead {
-		font-weight: 900;
-		background-color: white;
-		text-align: center;
-	}
-	thead tr{
-		border-bottom: none;
-	}
-	thead td{
-		color: rgb(110,218,218);
-	}
-	table thead tr:first-of-type td:first-of-type{
-		border-radius: 40px 0 0 0;
-	}
-	table thead tr:first-of-type td:last-of-type{
-		border-radius: 0 40px 0 0;
-	}
 </style>
 </head>
 <body>
 	
 	<header>
-		<h1>PRODUCE SAVER</h1>
+		<img  src="css/ps_logo.png">
+		<h1><a href="/index.html">PRODUCE SAVER</a></h1>
 	</header>
 	
 	<nav>
-		<a href="../inputProduce">ADD NEW</a>
-		<a href="viewProduceList">VIEW ALL</a>
-		<a href="#">EMAIL LIST</a>
+		<a href="../inputProduce">ADD PRODUCE</a>
+		<a id="active" href="viewProduceList">VIEW ALL</a>
+		<a href="menuOptions">MEAL PLANNER</a>
+		<a href="menuGroceryList">SHOPPING LIST</a>
 	</nav>
 		
 	<div id="container">		
@@ -57,7 +31,7 @@
 					<tr>
 						<td>Produce</td>
 						<td>Category</td>
-						<td>Shelf Life (In Days)</td>
+						<td>Shelf Life</td>
 						<td></td>
 						<td></td>
 					</tr>
@@ -65,7 +39,7 @@
 				<tr th:each="produceObject : ${produce}">
 					<td th:text="${produceObject.name}" />
 					<td th:text="${produceObject.category}" />
-					<td th:text="${produceObject.shelfLife}"/>
+					<td th:text="${produceObject.shelfLife} + ' Days'" />
 <!-- 					<td th:text="${produceObject.purchaseDate}" /> -->
 <!-- 					<td th:text="${produceObject.expirationDate}" /> -->
 					<td><a th:href="@{/edit/{id}(id=${produceObject.id})}">Add</a></td>

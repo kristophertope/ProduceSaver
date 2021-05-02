@@ -1,5 +1,9 @@
 package com.system.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +76,13 @@ public class WebController {
 		repo.save(b);
 		return viewProduceList(model);
 	}
+	
+	@GetMapping("/delete/{id}")
+	public String deleteProduce(@PathVariable("id") long id, Model model) {
+		Produce p = repo.findById(id).orElse(null);
+		repo.delete(p);
+		return viewProduceList(model);
+	}
 	//Here ends the products section
 	
 	//All this section is related to the meal plan
@@ -88,6 +99,7 @@ public class WebController {
 	@GetMapping("/inputMenu")
 	public String inputMenu(Model model){
 		Recipes r = new Recipes();
+		Grocery g = new Grocery();
 		model.addAttribute("newRecipe", r);
 		return "inputMenu";
 		
@@ -97,15 +109,37 @@ public class WebController {
 	public String inputMenu(@ModelAttribute Recipes re, Model model) {
 		
 		groceryRepo.save(re.getGrocery());
+		
+		
 		menuRepo.save(re);
 		return menuOptions(model);
 	}
 	
 	@GetMapping("/menuGroceryList")
 	public String menuGroceryList(Model model) {
-
+		if(groceryRepo.findAll().isEmpty()) {
+			return menuOptions(model);
+		}
 		model.addAttribute("product", groceryRepo.findAll());
 		return "groceryList";
+	}
+	
+	@GetMapping("/deleteGrocery/{id}")
+	public String deleteGrocery(@PathVariable("id") long id, Model model) {
+		Grocery gr = groceryRepo.findById(id).orElse(null);
+		groceryRepo.delete(gr);
+		
+		return menuGroceryList(model);
+	}
+	
+	
+	//This section is related to recipes
+	@GetMapping("/deleteRecipe/{id}")
+	public String deleteRecipe(@PathVariable("id") long id, Model model) {
+		Recipes r = menuRepo.findById(id).orElse(null);
+		menuRepo.delete(r);
+		groceryRepo.delete(r.getGrocery());
+		return menuOptions(model);
 	}
 	
 
