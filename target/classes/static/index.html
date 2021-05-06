@@ -1,13 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Produce App</title>
+	<meta charset="UTF-8">
+	<title>Produce Saver</title>
+	<link rel="stylesheet" type="text/css" href="css/saver_style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no">
+	<style>
+		#icons {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+		#icons img{
+			margin: 30px 12%;
+			width: 100%;
+		}
+		#icons a{
+			font-size: 100%;
+			font-weight: 900;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			text-decoration: none;
+			background-color: rgba(255,255,255,.3);
+			margin: 30px;
+			padding: 20px;
+			width: 15%;
+			min-width: 180px;
+			height: 20%;
+			border: 5px solid transparent;
+			border-radius: 55px;
+		}
+		#icons a:hover{
+			background-color: transparent;
+			border: 5px dashed white;
+		}
+	</style>
 </head>
 <body>
-<a href = "viewProduceList">See the List of All Produce</a><br />
-<a href = "inputProduce">Add More Produce to the List</a><br />
-<a href = "menuOptions">Menu Options</a><br />
-<a href = "menuGroceryList">See Your List of Products so far</a><br />
+	<header>
+		<img  src="css/ps_logo.png">
+		<h1><a href="../index.html">PRODUCE SAVER</a></h1>
+	</header>
+	
+	<div id="icons">
+		
+		<a href = "viewProduceList"><img src="css/list.png">See All Produce</a><br />
+		<a href = "inputProduce"><img src="css/add.png">Add Produce</a><br />
+		<a href = "#"><img src="css/clock.png">Expired Produce</a>
+		<a href = "menuGroceryList"><img src="css/menu.png">Shopping List</a><br />
+		<a href = "menuOptions"><img src="css/meal.png">Meal Planner</a><br />
+	</div>
+	
 </body>
 </html>
