@@ -1,11 +1,13 @@
 package com.system.beans;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +31,8 @@ public class Produce {
 	private LocalDate purchaseDate = LocalDate.now();
 	private LocalDate expirationDate = LocalDate.now().plusDays(shelfLife);
 	
+//	@ManyToMany(mappedBy = "items_on_list")
+//	Set<UserTable> items;
 	
 	public Produce() {
 		

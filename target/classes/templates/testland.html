@@ -1,0 +1,56 @@
+<!--   @author Alex Ryberg - alexr151-->
+<!--   CIS175 - Spring 2021 -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Produce Protector</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/saver_style.css}">
+<style>
+	table {
+		border-collapse: collapse;
+		border-bottom: 5px solid white;
+		margin-bottom: 10px;
+	}
+	
+	tr{
+		border-bottom: 2px solid white;
+	}
+	
+	tr, td{
+		border-collapse: collapse;
+		padding: 15px;
+	}
+	thead {
+		font-weight: 900;
+		background-color: white;
+		text-align: center;
+	}
+	thead tr{
+		border-bottom: none;
+	}
+	thead td{
+		color: rgb(110,218,218);
+	}
+	table thead tr:first-of-type td:first-of-type{
+		border-radius: 40px 0 0 0;
+	}
+	table thead tr:first-of-type td:last-of-type{
+		border-radius: 0 40px 0 0;
+	}
+</style>
+</head>
+<body>
+	<header>
+		<h1>PRODUCE SAVER</h1>
+	</header>
+	
+	<nav>
+		<a href="../newUserTable">CREATE NEW TABLE</a>
+		<a href="../viewTable">VIEW CURRENT TABLE</a>
+		<a href="viewProduce">VIEW PRODUCE LIST</a>
+	</nav>
+	
+	</body>
+</html>

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import com.system.beans.Grocery;
 import com.system.beans.Produce;
 import com.system.beans.Recipes;
+import com.system.beans.UserTable;
 
 /**
  * @author Joel Martinez-Gonzalez - jmartinezgonzale
@@ -33,6 +34,12 @@ public class BeanConfiguration {
 	public Grocery gorcery() {
 		Grocery g = new Grocery();
 		return g;
+	}
+	
+	@Bean
+	public UserTable userTable() {
+		UserTable uT = new UserTable();
+		return uT;
 	}
 
 }

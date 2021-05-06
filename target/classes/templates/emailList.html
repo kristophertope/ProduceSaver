@@ -1,8 +1,15 @@
+
+<!--   @author Alex Ryberg - alexr151-->
+<!--   CIS175 - Spring 2021 -->
+
+ 
+
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>View the List of Produce</title>
+<title>View the Email List</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/saver_style.css}">
 <style>
 	table {
@@ -40,39 +47,34 @@
 </head>
 <body>
 	
-	<header>
-		<h1>PRODUCE SAVER</h1>
-	</header>
+	<h1>PRODUCE SAVER</h1>
 	
 	<nav>
 		<a href="../inputProduce">ADD NEW</a>
 		<a href="viewProduceList">VIEW ALL</a>
 		<a href="#">EMAIL LIST</a>
 	</nav>
-		
-	<div id="container">		
+	
+	<div id="container">
 		<form>
-			<table class="test">
-				<thead>
-					<tr>
-						<td>Produce</td>
-						<td>Category</td>
-						<td>Shelf Life (In Days)</td>
-						<td></td>
-						<td></td>
-					</tr>
-				</thead>
-				<tr th:each="produceObject : ${produce}">
-					<td th:text="${produceObject.name}" />
-					<td th:text="${produceObject.category}" />
-					<td th:text="${produceObject.shelfLife}"/>
-<!-- 					<td th:text="${produceObject.purchaseDate}" /> -->
-<!-- 					<td th:text="${produceObject.expirationDate}" /> -->
-					<td><a th:href="@{/edit/{id}(id=${produceObject.id})}">Add</a></td>
-					<td><a th:href="@{/delete/{id}(id=${produceObject.id})}">Delete</a></td>
-				</tr>	
+			<table>
+			<thead>
+				<tr>
+					<td>First Name</td>
+					<td>Last Name</td>
+					<td>Email</td>
+				</tr>
+			</thead>
+			<tr th:each="userTableObject :${userTable}">
+				<td th:text="${userTableObject.fName}" />
+				<td th:text="${userTableObject.lName}" />
+				<td th:text="${userTableObject.email}" />
+				
+<!-- 				<td><a th:href="@/select{id}(id=@{userTableObject.id)}">Select</a></td> -->
+				<td><a th:href="/addToTable">Add</a>
+			</tr>
 			</table>
 		</form>
-	</div>	
+	</div>
 </body>
 </html>
