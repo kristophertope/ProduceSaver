@@ -23,6 +23,7 @@
 		
 		<form th:object="${newProduce}" th:action="@{/update/{id}(id=${newProduce.id})}" method="POST">
 		Name: <input name="name" size="20" th:field="*{name}"><br />
+		Shelf Life: <input name="life" size="20" th:field="*{shelfLife}"><br />
 		
 		<input name="submit" type="submit" />
 		</form>
