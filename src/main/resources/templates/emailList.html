@@ -1,0 +1,80 @@
+
+<!--   @author Alex Ryberg - alexr151-->
+<!--   CIS175 - Spring 2021 -->
+
+ 
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View the Email List</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/saver_style.css}">
+<style>
+	table {
+		border-collapse: collapse;
+		border-bottom: 5px solid white;
+		margin-bottom: 10px;
+	}
+	
+	tr{
+		border-bottom: 2px solid white;
+	}
+	
+	tr, td{
+		border-collapse: collapse;
+		padding: 15px;
+	}
+	thead {
+		font-weight: 900;
+		background-color: white;
+		text-align: center;
+	}
+	thead tr{
+		border-bottom: none;
+	}
+	thead td{
+		color: rgb(110,218,218);
+	}
+	table thead tr:first-of-type td:first-of-type{
+		border-radius: 40px 0 0 0;
+	}
+	table thead tr:first-of-type td:last-of-type{
+		border-radius: 0 40px 0 0;
+	}
+</style>
+</head>
+<body>
+	
+	<h1>PRODUCE SAVER</h1>
+	
+	<nav>
+		<a href="../inputProduce">ADD NEW</a>
+		<a href="viewProduceList">VIEW ALL</a>
+		<a href="#">EMAIL LIST</a>
+	</nav>
+	
+	<div id="container">
+		<form>
+			<table>
+			<thead>
+				<tr>
+					<td>First Name</td>
+					<td>Last Name</td>
+					<td>Email</td>
+				</tr>
+			</thead>
+			<tr th:each="userTableObject :${userTable}">
+				<td th:text="${userTableObject.fName}" />
+				<td th:text="${userTableObject.lName}" />
+				<td th:text="${userTableObject.email}" />
+				
+<!-- 				<td><a th:href="@/select{id}(id=@{userTableObject.id)}">Select</a></td> -->
+				<td><a th:href="/addToTable">Add</a>
+			</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

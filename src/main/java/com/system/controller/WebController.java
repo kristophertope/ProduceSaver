@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.system.beans.Grocery;
 import com.system.beans.Produce;
 import com.system.beans.Recipes;
+import com.system.beans.UserTable;
 import com.system.repository.GroceryInterface;
 import com.system.repository.MenuRepository;
 import com.system.repository.ProduceAppRepository;
+import com.system.repository.UserTableRepository;
 
 /**
  * @author Joel Martinez-Gonzalez - jmartinezgonzale
@@ -36,6 +38,8 @@ public class WebController {
 	MenuRepository menuRepo;
 	@Autowired
 	GroceryInterface groceryRepo;
+	@Autowired
+	UserTableRepository userTableRepo;
 	
 	//All this section is the related to products 
 	@GetMapping({"/viewProduceList"})
@@ -44,8 +48,18 @@ public class WebController {
 			return inputProduce(model);
 		}
 		model.addAttribute("produce", repo.findAll());
+		return "testland";
+	}
+	
+	@GetMapping({"/viewProduce"})
+	public String viewProduce(Model model) {
+		if(repo.findAll().isEmpty()) {
+			return inputProduce(model);
+		}
+		model.addAttribute("produce", repo.findAll());
 		return "results";
 	}
+	
 	
 	@GetMapping("/inputProduce")
 	public String inputProduce(Model model) {
@@ -124,6 +138,44 @@ public class WebController {
 		return "groceryList";
 	}
 	
+
+	//Ends the menu section
+	
+	//begins user table function
+	
+	@GetMapping({"/newUserTable"})
+	public String newTable(Model model) {
+		UserTable uT = new UserTable();
+		model.addAttribute("newUserTable", uT);
+		return "newTable";
+	}
+	
+	@PostMapping("/newUserTable")
+	public String newTable(@ModelAttribute UserTable uT, Model model) {
+		userTableRepo.save(uT);
+		return "testLand";
+	}
+	
+	@PostMapping("/addToTable")
+	public String reviseBook(@Valid UserTable uT, BindingResult result, Model model) {
+		if(result.hasErrors()) {
+			return "emailList";
+		}
+		userTableRepo.getOne(uT.getListId());
+		return viewProduceList(model);
+	}
+	
+	@GetMapping({"/viewEmailList"})
+	public String viewEmailList(Model model) {
+		if(userTableRepo.findAll().isEmpty()) {
+			return inputProduce(model);
+		}
+		model.addAttribute("userTable", userTableRepo.findAll());
+		return "emailList";
+	}
+	
+	
+
 	@GetMapping("/deleteGrocery/{id}")
 	public String deleteGrocery(@PathVariable("id") long id, Model model) {
 		Grocery gr = groceryRepo.findById(id).orElse(null);
@@ -142,7 +194,6 @@ public class WebController {
 		return menuOptions(model);
 	}
 	
-
 }
 
 
